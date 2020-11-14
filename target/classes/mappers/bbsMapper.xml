@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.springDAO.BbsDAO">
+  
+  	<insert id="insert">
+  		insert into tbl_board(subject, content,writer) 
+  		values( #{subject},#{content},#{writer})
+  	
+  	</insert>
+  	
+<!--   	<select id="read" resultType="com.spring.vo.BbsVO"> 
+
+		mybatis-config.xml파일에서 <configuration>,<typeAliases> 를 
+		써주어 resultType="BbsVO"로 적을수 있게 되었다.
+		-->
+  	 <select id="read" resultType="BbsVO">
+  		select bid, subject, content, writer, regdate, hit
+  			from 
+  				tbl_board 
+  			where bid=#{bid}
+  	</select>
+  	
+  	<update id="update">
+  		update tbl_board set subject=#{subject}, content=#{content} 
+  			where bid=#{bid}
+  	 </update>
+  	 
+  	 <delete id="delete">
+  	 	delete from tbl_board where bid=#{bid}
+  	 </delete>
+  	
+  	 <select id="list" resultType="com.spring.vo.BbsVO">
+  		<![CDATA[
+  	 	select bid, subject, content, writer, regdate, hit
+  	 		from tbl_board
+  	 		 	where bid > 0
+  	 		order by bid desc, regdate desc
+  	 	]]>
+  	 </select>
+  	 
+  	 <select id="listPage" resultType="BbsVO">
+  	 	<![CDATA[
+		select
+			bid, subject, content, writer, regdate, hit
+		from 
+			tbl_board
+		where bid > 0
+		order by bid desc, regdate desc
+  	 	limit #{page}, 10
+  	 	]]>
+  	 </select>
+  	 
+  	 
+  	 <select id="listCriteria" resultType="BbsVO">
+  	 <![CDATA[
+  	 	select
+  	 	 	bid, subject, content, writer, regdate, hit
+  	 	from
+  	 	 	tbl_board 
+  	 	where bid>0
+  	 	 	 order by bid desc, regdate desc
+  	 	limit #{startPage}, #{numPerPage}
+  	 ]]>
+<!--   	 #{startPage}는 getStartPage() 메소드를 호출하는것과 같다. -->
+  	 
+  	 </select>
+  	 
+  	 <select id="countData" resultType="int">
+  	 <![CDATA[
+  	 	select count(bid) from tbl_board where bid > 0
+  	 	]]>
+  	 </select>
+  		
+  </mapper>
+  
+  
+  
