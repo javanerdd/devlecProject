@@ -122,8 +122,21 @@ public class BbsController {
 //		reAttr.addFlashAttribute("result", "success");
 //
 //		return "redirect:/bbs/list";
-//	}
+//	}d
 	
+	
+	//수정처리
+	@RequestMapping(value="/modityPage", method=RequestMethod.POST)
+	public String modifyPOST(BbsVO bvo, PageCriteria pCri, RedirectAttributes reAttr) throws Exception{
+		
+		
+		bsvc.modify(bvo);
+		reAttr.addAttribute("page", pCri.getPage());
+		reAttr.addAttribute("numPerPage", pCri.getNumPerPage());
+		
+		
+		return "redirect:bbs/pageList";
+	}
 	
 	
 	
@@ -135,7 +148,6 @@ public class BbsController {
 
 		model.addAttribute("list", bsvc.listCriteria(pCria));
 	}
-
 	@RequestMapping(value = "/pageList", method = RequestMethod.GET)
 	public void pageList(PageCriteria pCria, Model model) throws Exception {
 		logger.info(pCria.toString());
