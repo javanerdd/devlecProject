@@ -57,6 +57,19 @@ public class PagingMaker {
 		
 		return uriComponents.toUriString();
 	}
+	
+	
+	public String makeFind(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+			.queryParam("page", cri.getPage())
+			.queryParam("numPerPage", cri.getNumPerPage())
+			.queryParam("findType", ((FindCriteria)cri).getFindType())
+			.queryParam("keyWord", ((FindCriteria)cri).getKeyWord())
+			.build();
+			
+			return uriComponents.toUriString();
+	}
+	
 
 	
 	//setter getter

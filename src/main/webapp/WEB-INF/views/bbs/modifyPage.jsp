@@ -23,7 +23,7 @@
                   
                    <form  role="form" class="form-horizontal style-form" method="post">
                    <input type="hidden" name="page" value="${pCri.page}" />
-                   <input type="hidden" name="numPerPage" value="${pCria.numPerPage }"/>
+                   <input type="hidden" name="numPerPage" value="${pCri.numPerPage}"/>
                    
                   	  <h4 class="mb"><i class="fa fa-angle-right"></i>수정내용</h4>
                   	  
@@ -53,9 +53,7 @@
                               <div class="col-sm-10">
                                   <input type="text" class="form-control" name="writer" value="${bbsVO.writer}">
                               </div>
-                          </div>
-                          
-                    
+                          </div>                                        
                     </form>
                   </div><!-- form-panel -->
           			<div class="form-group">
@@ -66,13 +64,9 @@
                     </div>
                     
                     <script>
-                    	// $는 jQUery의 의미
-                    	//id=# ,class=. 으로 들어간다.
 						$(document).ready(function(){
-							var frmObj =$("form[role='form']")
-							
-							console.log("폼태그 입니다..");
-							
+							var frmObj =$("form[role='form']")							
+							console.log("폼태그 입니다..");							
 							
 							$("#btn_save").on("click",function(){
 								frmObj.attr("action","/bbs/modifyPage") //수정처리 페이지 이동

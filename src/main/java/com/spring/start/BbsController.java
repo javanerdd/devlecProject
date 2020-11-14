@@ -100,20 +100,8 @@ public class BbsController {
 //
 //	}
 	
-
-	//수정조회
-	@RequestMapping(value="modifyPage", method = RequestMethod.GET)
-	public void modifyGet(@RequestParam("bid")  int bid, 
-			@ModelAttribute("pCri") PageCriteria pCria, 
-			Model model) throws Exception{
-		
-		model.addAttribute(bsvc.read(bid));
-		
-	}
 	
-
 	
-
 	// 수정처리
 //	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 //	public String modifyPOST(BbsVO bvo, RedirectAttributes reAttr) throws Exception {
@@ -122,11 +110,20 @@ public class BbsController {
 //		reAttr.addFlashAttribute("result", "success");
 //
 //		return "redirect:/bbs/list";
-//	}d
-	
+//	}	
+
+	//수정조회
+	@RequestMapping(value="/modifyPage", method = RequestMethod.GET)
+	public void modifyGet(@RequestParam("bid")  int bid, 
+			@ModelAttribute("pCri") PageCriteria pCria, 
+			Model model) throws Exception{
+		
+		model.addAttribute(bsvc.read(bid));
+		
+	}
 	
 	//수정처리
-	@RequestMapping(value="/modityPage", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
 	public String modifyPOST(BbsVO bvo, PageCriteria pCri, RedirectAttributes reAttr) throws Exception{
 		
 		
@@ -135,12 +132,8 @@ public class BbsController {
 		reAttr.addAttribute("numPerPage", pCri.getNumPerPage());
 		
 		
-		return "redirect:bbs/pageList";
+		return "redirect:/bbs/pageList";
 	}
-	
-	
-	
-	
 
 	@RequestMapping(value = "/pageListTest", method = RequestMethod.GET)
 	public void pageListTest(PageCriteria pCria, Model model) throws Exception {
@@ -159,4 +152,10 @@ public class BbsController {
 		pagingMaker.setTotalData(bsvc.listCountData(pCria));
 		model.addAttribute("pagingMaker",pagingMaker);
 	}
+	
+	
+	
+	
+	
+	
 }
