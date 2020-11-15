@@ -1,0 +1,70 @@
+[mybatis 표현식]
+	#if
+ 	 -사용예
+		<if test="content!=null">
+			명령문...
+		</if>
+	
+	#choose(when, otherwise)
+	 -사용예
+	 
+	 	<choose>
+	 		<when test="content!=null">
+	 			명령문....
+	 		</when>
+	 		
+	 		<when test="product !=null and product.code != null" >
+	 			명령문....
+	 		</when>
+	 		<otherwise>
+	 			명령문....
+	 		</otherwise>
+	 		
+	 	</choose>
+--------------------------------------------------------------------------------------------------
+
+	#trim(where, set)
+		
+//		update member set userName =#{userName} , email= #{email} , tel = #{tel} where id = #{id}
+		
+		맨끝에 있는 콤마(,) 를 제거하는 경우
+		
+			<update id="updateMember" parameterType="com.spring.xxxVO">
+			update member
+		<trim prefix="set" suffixOverrides=",">  //뒤에있는놈을 지운다
+			<if test="userName != null">userName=#{userName},</if>
+			<if test="email !=null">email=#{email},</if>
+			<if test="tel != null">tel=#{tel}</if>
+		</trim>
+			where id = #{id}
+			
+			
+			
+	//맨 앞에 있는 연산자를(and/or) 제거 하는 경우
+	<select id="selectInfo" parameterType="com.spring.xxxVO" resultType="memberResultMap">
+//		select*from Employee where userId = #{userId} and pwd =#{pwd} and email=#{email}
+		
+		
+		select*from Employee
+		<trim prefix="where" prefixOverrides="AND|OR"> //앞에 있는놈을 지운다
+			<if test="userName != null">userName=#{userName}</if>
+			<if test="pwd != null">AND pwd=#{pwd}</if>
+			<if test="email != null">AND email=#{email}</if>
+		</trim>
+		
+		
+	</select>
+	
+---------------------------------------------------------------------------------------------------		
+
+	#forEach
+	
+	<foreach item="item" index="idx" collection="list"
+		open"(" separator="," close=")">
+		#{item}
+	</foreach>
+	
+	
+	
+	
+	

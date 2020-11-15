@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.spring.dao.BbsDAO;
 import com.spring.vo.BbsVO;
+import com.spring.vo.FindCriteria;
 import com.spring.vo.PageCriteria;
 
 
@@ -48,6 +49,17 @@ public class BbsServiceImpl implements BbsService{
 	public int listCountData(PageCriteria pCria) throws Exception{
 		return bdao.countData(pCria);
 	}
+	
+	@Override
+	public List<BbsVO> listFind(FindCriteria findCri) throws Exception{
+		return bdao.listFind(findCri);
+	}
+	
+	@Override
+	public int findCountData(FindCriteria findCri) throws Exception{
+		return bdao.findCountData(findCri);
+	}
+	
 	// ¿äÃ» > controller > serviceimpl >
 	// dao > serviceimpl > controller > jsp
 

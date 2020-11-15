@@ -24,19 +24,19 @@
 					<span class="col-md-12">
 						<select name="findType" class="col-md-3">
 						  <option value="N"
-						  	<c:out value="${ fCri.findType==null?'selected':''}"/>>------</option>
+						  	<c:out value="${fCri.findType==null?'selected':''}"/>>------</option>
 						  <option value="S"
-						  	<c:out value="${fCri.findType=='S'? 'selected':''}"/>>제목</option>
+						  	<c:out value="${fCri.findType=='S'?'selected':''}"/>>제목</option>
 						  <option value="C"
-						  	<c:out value="${ fCri.findType=='C'? 'selected':''}"/>>내용</option>
+						  	<c:out value="${fCri.findType=='C'?'selected':''}"/>>내용</option>
 						  <option value="W"
-						  	<c:out value="${fCri.findType=='W'? 'selected':''}"/>>작성자</option>
+						  	<c:out value="${fCri.findType=='W'?'selected':''}"/>>작성자</option>
 						  <option value="SC"
-						  	<c:out value="${fCri.findType=='SC' 'selected':''}"/>>제목+내용</option>
+						  	<c:out value="${fCri.findType=='SC'?'selected':''}"/>>제목+내용</option>
 						  <option value="CS"
-						  	<c:out value="${fCri.findType=='CS' 'selected':''}"/>>내용+작성자</option>
+						  	<c:out value="${fCri.findType=='CS'?'selected':''}"/>>내용+작성자</option>
 						  <option value="SCW"
-						  	<c:out value="${fCri.findType=='SCW' 'selected':''}"/>>제목+내용+작성자</option>
+						  	<c:out value="${fCri.findType=='SCW'?'selected':''}"/>>제목+내용+작성자</option>
 						</select>
 						<input type="text" name="keyWord" id="findWord" value="${fCri.keyWord}"/>
 						<button id="findBtn">검색</button><br/><br/>
@@ -58,7 +58,7 @@
 									<tr>
 										<td>${bvo.bid}</td>
 <!-- 										http://localhost:8060/bbs/readPage?page=1&numPerPage=10&bid=786412 -->
-										<td><a href="/bbs/readPage${pagingMaker.makeFind(pagingMaker.cri.page)}&bid=${bvo.bid}">${bvo.subject}</a></td>
+										<td><a href="/fbbs/readPage${pagingMaker.makeFind(pagingMaker.cri.page)}&bid=${bvo.bid}">${bvo.subject}</a></td>
 										<td>${bvo.writer}</td>
 										<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 												value="${bvo.regdate}" /></td>
@@ -120,11 +120,11 @@
 
 
 <script type="text/javascript">
-${document}.ready(function(){
+$(document).ready(function(){
 	$('#findBtn').on("click", function(e){
 		self.location = "list"+"${pagingMaker.makeURI(1)}"
-							  +"&findType=" +$("select option:seleceted").val()
-							  +"&ketWord=" +$("#findWord").val()
+							  +"&findType="+$("select option:seleceted").val()
+							  +"&keyWord="+$("#findWord").val();
 	});
 });
 

@@ -2,6 +2,7 @@ package com.spring.service;
 
 import java.util.List;
 import com.spring.vo.BbsVO;
+import com.spring.vo.FindCriteria;
 import com.spring.vo.PageCriteria;
 
 public interface BbsService {
@@ -20,4 +21,9 @@ public interface BbsService {
 	public List<BbsVO> listCriteria(PageCriteria pCria) throws Exception;
 	
 	public int listCountData(PageCriteria pCria) throws Exception;
+	
+	
+	public List<BbsVO> listFind(FindCriteria findCri) throws Exception;
+	
+	public int findCountData(FindCriteria findCri) throws Exception;
 }

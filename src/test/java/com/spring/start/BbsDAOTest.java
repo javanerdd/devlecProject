@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.dao.BbsDAO;
 import com.spring.vo.BbsVO;
+import com.spring.vo.FindCriteria;
 import com.spring.vo.PageCriteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -109,19 +110,42 @@ public class BbsDAOTest {
 //	}
 	
 
+//	@Test
+//	public void uriTest2() throws Exception{
+//		UriComponents uriComponents =
+//				UriComponentsBuilder.newInstance().path("/{module}/{page}")
+//				.queryParam("bid", 100)
+//				.queryParam("numPerPage",20)
+//				.build()
+//				.expand("bbs","read")
+//				.encode();
+//		
+//		logger.info("/bbs/read?bid=100&numPerPage=20");
+//				
+//	}
+
 	@Test
-	public void uriTest2() throws Exception{
-		UriComponents uriComponents =
-				UriComponentsBuilder.newInstance().path("/{module}/{page}")
-				.queryParam("bid", 100)
-				.queryParam("numPerPage",20)
-				.build()
-				.expand("bbs","read")
-				.encode();
+	public void findTest() throws Exception{
+		FindCriteria cri = new FindCriteria();
 		
-		logger.info("/bbs/read?bid=100&numPerPage=20");
-				
+		cri.setPage(1);
+		cri.setPage(2);
+		cri.setFindType("S");
+		cri.setKeyword("테스트");
+		logger.info("****************테스트코드 출력*******************");
+		List<BbsVO> list = bdao.listFind(cri);
+		
+		for(BbsVO bvo:list) {
+			logger.info(bvo.getBid()+": " + bvo.getSubject());
+		}
+		
+		logger.info("****************테스트 Data갯수 출력*******************");
+		logger.info("countData: " + bdao.findCountData(cri));
 	}
+	
+	
+	
+	
 	
 	
 }

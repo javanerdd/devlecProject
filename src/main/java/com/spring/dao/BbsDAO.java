@@ -3,6 +3,7 @@ package com.spring.dao;
 import java.util.List;
 
 import com.spring.vo.BbsVO;
+import com.spring.vo.FindCriteria;
 import com.spring.vo.PageCriteria;
 
 public interface BbsDAO {
@@ -22,4 +23,12 @@ public interface BbsDAO {
 	public List<BbsVO> listCriteria(PageCriteria pageCria) throws Exception;
 	
 	public int countData(PageCriteria pageCria) throws Exception; // µ•¿Ã≈Õ √— ∞πºˆ
+	
+	
+	
+	public List<BbsVO> listFind(FindCriteria findCri) throws Exception;
+	
+	public int findCountData(FindCriteria findCri) throws Exception;
+	
+	
 }
