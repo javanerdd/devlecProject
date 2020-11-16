@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.service.BbsService;
+import com.spring.vo.BbsVO;
 import com.spring.vo.FindCriteria;
 import com.spring.vo.PagingMaker;
 
@@ -25,7 +26,7 @@ public class FindController {
 	@Inject
 	private BbsService bsvc;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public void list(@ModelAttribute("fCri") FindCriteria fCri, Model model) throws Exception {
 
 		logger.info(fCri.toString());
@@ -42,7 +43,7 @@ public class FindController {
 		model.addAttribute("pagingMaker", pagingMaker);
 	}
 
-	@RequestMapping(value="/read", method=RequestMethod.GET)
+	@RequestMapping(value="/readPage", method=RequestMethod.GET)
 	public void readPage(@RequestParam("bid") int bid, 
 						@ModelAttribute("fCri") FindCriteria fCri, Model model) throws Exception{
 		
@@ -67,8 +68,68 @@ public class FindController {
 		return "redirect:/fbbs/list";
 	}
 	
+	//수정조회 페이지
+	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
+	public void modifyGET(int bid, @ModelAttribute("fCri") FindCriteria fCri, Model model ) throws Exception {
+		
+		model.addAttribute(bsvc.read(bid));
+	}
+	
+	//수정처리 페이지
+	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
+	public String modifyPOST(BbsVO bvo, FindCriteria fCri, RedirectAttributes reAttr) throws Exception{
+		
+		logger.info(fCri.toString());
+		bsvc.modify(bvo);
+		
+		reAttr.addAttribute("page",fCri.getPage());
+		reAttr.addAttribute("numPerPage", fCri.getNumPerPage());
+		reAttr.addAttribute("keyWord",fCri.getKeyWord());
+		reAttr.addAttribute("findType", fCri.getFindType());
+		
+		reAttr.addFlashAttribute("result","success");
+		
+		logger.info(reAttr.toString());
+		return "redirect:/fbbs/list";
+		
+	}
+	
+	//글쓰기 페이지 요청
+	@RequestMapping(value="/writer", method=RequestMethod.GET)
+	public void writerGET() throws Exception{
+		logger.info("writerGET() 호출...........");
+	}
+	
+	//DB 글 입력 처리
+	@RequestMapping(value="/writer", method=RequestMethod.POST)
+	public String writerPOST(BbsVO bvo, FindCriteria fCri, RedirectAttributes reAttr) throws Exception {
+		
+		logger.info("writerPOST() 호출...........");
+		bsvc.writer(bvo);
+		
+		
+		reAttr.addFlashAttribute("result","success");
+		
+		return "redirect:/fbbs/list";
+	}
+	
+	
+	
+	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 요청 > controller > serviceimpl >
 // dao > serviceimpl > controller > jsp

@@ -131,7 +131,7 @@ public class BbsDAOTest {
 		cri.setPage(1);
 		cri.setPage(2);
 		cri.setFindType("S");
-		cri.setKeyword("테스트");
+		cri.setKeyWord("테스트");
 		logger.info("****************테스트코드 출력*******************");
 		List<BbsVO> list = bdao.listFind(cri);
 		

@@ -18,9 +18,7 @@
 						<i class="fa fa-angle-right"></i>게시판 목록
 					</h4>
 					<section id="unseen">
-					
 					<div align="center">
-					
 					<span class="col-md-12">
 						<select name="findType" class="col-md-3">
 						  <option value="N"
@@ -34,7 +32,7 @@
 						  <option value="SC"
 						  	<c:out value="${fCri.findType=='SC'?'selected':''}"/>>제목+내용</option>
 						  <option value="CS"
-						  	<c:out value="${fCri.findType=='CS'?'selected':''}"/>>내용+작성자</option>
+						  	<c:out value="${fCri.findType=='CW'?'selected':''}"/>>내용+작성자</option>
 						  <option value="SCW"
 						  	<c:out value="${fCri.findType=='SCW'?'selected':''}"/>>제목+내용+작성자</option>
 						</select>
@@ -42,6 +40,7 @@
 						<button id="findBtn">검색</button><br/><br/>
 						</span>
 					</div>
+					
 						<table class="table table-bordered table-striped table-condensed">
 							<thead>
 								<tr>
@@ -70,8 +69,6 @@
 						</table>
 					</section>
 
-
-
 				</div>
 				<!-- /content-panel -->
 
@@ -97,18 +94,15 @@
 						</a>
 					</c:if>	
 					</div>
-				</div>
-				<!-- /showback -->
+					<div align="center">
+						<br/><button id="writeBtn">글쓰기</button>					
+					</div>
+				</div><!-- /showback -->
+			</div><!-- /col-lg-4 -->
+		</div><!-- /row -->
 
-			</div>
-			<!-- /col-lg-4 -->
-		</div>
-		<!-- /row -->
-
-	</section>
-	<!-- /wrapper -->
-</section>
-<!-- /MAIN CONTENT -->
+	</section><!-- /wrapper -->
+</section><!-- /MAIN CONTENT -->
 <!--main content end-->
 
 <script>
@@ -118,17 +112,29 @@
 	}
 </script>
 
-
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#findBtn').on("click", function(e){
-		self.location = "list"+"${pagingMaker.makeURI(1)}"
-							  +"&findType="+$("select option:seleceted").val()
+		console.log("으으으으으으ㅡ아으ㅏㅇ느ㅏㄴ으란으란으란으랑느랑ㄴ");
+		
+		self.location="list"+"${pagingMaker.makeURI(1)}"
+							  +"&findType=" +$("select option:selected").val()
 							  +"&keyWord="+$("#findWord").val();
+		
+		console.log($("select option:selected").val());
+		console.log($("#findWord").val());
 	});
+	
+	$('#writeBtn').on("click",function(){
+		self.location="writer";
+		
+	});
+	
+	
 });
-
 </script>
+
+
 
 
 <%@ include file="../include/footer.jsp"%>

@@ -64,7 +64,7 @@ public class PagingMaker {
 			.queryParam("page", cri.getPage())
 			.queryParam("numPerPage", cri.getNumPerPage())
 			.queryParam("findType", ((FindCriteria)cri).getFindType())
-			.queryParam("keyWord", ((FindCriteria)cri).getKeyWord())
+			.queryParam("s", ((FindCriteria)cri).getKeyWord())
 			.build();
 			
 			return uriComponents.toUriString();

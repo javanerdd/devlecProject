@@ -72,28 +72,26 @@
 	</select>
 
 	<!-- mybatis에 제공하는 <include> <sql> -->
-
-
 	<sql id="findSQL">
 		<if test="findType !=null">
 			<if test="findType=='S'.toString()">
 				and subject like CONCAT('%',#{keyWord},'%')
 			</if>
-			<if test="findType=='C'.toString()">
+			<if test="findType =='C'.toString()">
 				and content like CONCAT('%',#{keyWord},'%')
 			</if>
-			<if test="findType=='W'.toString()">
+			<if test="findType =='W'.toString()">
 				and content like CONCAT('%',#{keyWord},'%')
 			</if>
-			<if test="findType=='SC'.toString()">
+			<if test="findType =='SC'.toString()">
 				and (subject like CONCAT('%',#{keyWord},'%') OR content like CONCAT
 				('%',#{keyWord},'%'))
 			</if>
-			<if test="findType=='CW'.toString()">
+			<if test="findType =='CW'.toString()">
 				and (content like CONCAT('%',#{keyWord},'%') OR writer like
 				CONCAT('%',#{keyWord},'%'))
 			</if>
-			<if test="findType=='SCS'.toString()">
+			<if test="findType =='SCW'.toString()">
 				and (subject like CONCAT('%',#{keyWord},'%')
 				OR content like CONCAT('%',#{keyWord},'%')
 				OR writer like CONCAT('%',#{keyWord},'%'))
@@ -101,24 +99,16 @@
 		</if>
 	</sql>
 
-
-
-
 	<select id="listFind" resultType="BbsVO">
   	 	<![CDATA[
   	 		select * from tbl_board
   	 			where bid>0
-		]]>
-		
-		<include refid="findSQL"></include>
-		
-		<![CDATA[
-			
+		]]>		
+		<include refid="findSQL"></include>		
+		<![CDATA[			
 			order by bid desc
 			limit #{startPage}, #{numPerPage}
 		]]>
-					
-
 	</select>
 
 

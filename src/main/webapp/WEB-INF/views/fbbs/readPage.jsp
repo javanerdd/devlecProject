@@ -73,14 +73,14 @@
                     		});
                     		
                     		$(".btn-danger").on("click",function(){
-                    			frmObj.attr("method","get");
+                    			frmObj.attr("method","post");
                     			frmObj.attr("action","/fbbs/delPage");
                     			frmObj.submit();
                     		});
                     		
                     		$(".btn-info").on("click",function(){
                      		//	self.location = "/bbs/list";
-                    			frmObj.attr("method","get");
+//                    			frmObj.attr("method","post");
                     			frmObj.attr("action","/fbbs/list");
                     			frmObj.submit();
                     		});
