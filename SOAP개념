@@ -1,0 +1,27 @@
+[SOAP 기반 웹서비스]
+
+- SOA : 해당 서비스를 서로 조합해서 업무 기능을 구현한
+		어플리케이션을 만들어내는 소프트워어 악키텍처
+		
+- DATA ----> XML로 표현된다.
+- UDDI : Unibersal Description, Discovery and Integration
+
+	.웹 서비스를 등록하고 검색하기 위한 저장소로 웹서비스를 공적으로 접근,
+	검색이 가능하도록 한 공개된 레지스트리
+	
+[RESTful 기반 웹서비스]
+
+-Roy Fielding이 박사학위 논문에서 웹 아키텍처가 웹의 본래 설계의 우수성을 활용하지 못하므로
+웹이 장점을 최대한 활용할 수 있는 네트워크 기반의 아키텍처를 제안
+
+#RESTful(REpresentational State Transfer, 2000년)
+	.HTTP 프로토콜로 데이터를 전달하는 프레임워크
+	.클라이언트와 서버간의 구성요소를 엄격하게 분리하여 구현을 단순화 함
+	.서버와 클라이언트를 독립적으로 구현함으로, 확장성을 향상
+	.핵심은 Web에 개방된 리소스를 이용한다.
+	.REST는 웹에 개바왼 리소스들을 원격에서 또는 로컬에서 쉽게 이용할 수 있는 웹 응용을 정착
+	.REST 아키턱처 스타일에 따라 정의되고 이용되는 서비스나 응용프로그램을 RESTful 웹 서비스라고 부른다.
+	
+	
+	#SOA(Service oriented Architecture), ROA(Resource Oriented Architecture)
+	 서비스지향 아키텍처                   자원지향 아키턱처
