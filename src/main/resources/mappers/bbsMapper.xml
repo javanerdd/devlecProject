@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.springDAO.BbsDAO">
+<mapper namespace="com.spring.dao.BbsDAO">
 
 	<insert id="insert">
 		insert into tbl_board(subject, content,writer)
@@ -29,7 +29,7 @@
 		delete from tbl_board where bid=#{bid}
 	</delete>
 
-	<select id="list" resultType="com.spring.vo.BbsVO">
+	<select id="list" resultType="BbsVO">
   		<![CDATA[
   	 	select bid, subject, content, writer, regdate, hit
   	 		from tbl_board

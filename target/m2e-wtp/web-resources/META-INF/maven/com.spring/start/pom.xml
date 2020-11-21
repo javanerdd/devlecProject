@@ -92,22 +92,22 @@
 		</dependency>
 
 		<!-- Servlet -->
-		
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>servlet-api</artifactId> -->
-<!-- 			<version>2.5</version> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet</groupId> -->
+		<!-- <artifactId>servlet-api</artifactId> -->
+		<!-- <version>2.5</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-		
-		
-		
+
+
+
 
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
@@ -120,10 +120,20 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-		
-		
-		
+
+
+
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+
+
+
+
+
 
 		<!-- Test -->
 		<dependency>
@@ -140,41 +150,41 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 		</dependency>
-		
-		
-<!-- 		mybatis 연동 라이브러리 -->
+
+
+		<!-- mybatis 연동 라이브러리 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.2.8</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.1.7.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.1.7.RELEASE</version>
 		</dependency>
 
-<!-- 	mybatis log4jdbc-log4j2 의 로그 라이브러리 -->
-		
- 		 <dependency>
-   			<groupId>org.bgee.log4jdbc-log4j2</groupId>
-   			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
-   			<version>1.16</version>
-  		</dependency>
-  		
+		<!-- mybatis log4jdbc-log4j2 의 로그 라이브러리 -->
+
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

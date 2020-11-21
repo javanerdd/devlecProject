@@ -1,0 +1,14 @@
+댓글 테이블
+
+create table reply(
+	rebid int not null auto_increment, --
+    bid int not null default 0, -- 게시판 글번호
+    replyContent varchar(1000), -- 댓글
+    replyer varchar(50) not null, -- 작성자
+    regdate TIMESTAMP not null default now(),
+    updatedate TIMESTAMP not null default now(),
+    primary key(rebid)
+);
+
+
+alter table reply add constraint fk_bid foreign key(bid) references tbl_board(bid);

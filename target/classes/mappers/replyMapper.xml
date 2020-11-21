@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.spring.dao.ReplyDAO">
+ 
+ 	<select id="relist" resultType="ReplyVO">
+ 	
+ 		select * from reply
+ 		where bid=#{bid}
+ 		order by rebid desc
+ 	</select>
+
+	<insert id="write">
+		insert into reply(bid,replyContent, replyer) values (#{bid}, #{replyContent}, #{replyer})
+	</insert>
+	
+	<update id="modify">
+		update reply set replyContent=#{replyContent}, updatedate=now() 
+		where rebid=#{rebid}
+	</update>
+	
+	<delete id="delete">
+		delete form reply where rebid = #{rebid}
+	
+	</delete>
+	
+ </mapper>
