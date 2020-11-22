@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.ReplyDAO;
+import com.spring.vo.PageCriteria;
 import com.spring.vo.ReplyVO;
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -26,12 +27,23 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	@Override
 	public void modifyReply(ReplyVO rvo) throws Exception{
-		dao.modify(rvo);
+		dao.reModify(rvo);
 	}
 	
 	@Override
 	public void delReply(Integer rebid) throws Exception{
-		dao.delete(rebid);
+		dao.reDelete(rebid);
+	}
+	
+	@Override
+	public List<ReplyVO> replyListPage(Integer bid, PageCriteria pCri) throws Exception{
+		
+		return dao.reListPage(bid, pCri);
+	}
+	
+	@Override
+	public int reCount(Integer bid) throws Exception{
+		return dao.reCount(bid);
 	}
 	
 	

@@ -16,14 +16,30 @@
 		insert into reply(bid,replyContent, replyer) values (#{bid}, #{replyContent}, #{replyer})
 	</insert>
 	
-	<update id="modify">
+	<update id="reModify">
 		update reply set replyContent=#{replyContent}, updatedate=now() 
 		where rebid=#{rebid}
 	</update>
 	
-	<delete id="delete">
-		delete form reply where rebid = #{rebid}
+	<delete id="reDelete">
+		delete from reply where rebid = #{rebid}
 	
 	</delete>
+	
+	
+	<select id="reListPage">
+		select * from reply
+		where bid =#{bid}
+		order by rebid desc
+		limit #{pCri.startPage}, #{pCri.numPerpage}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
 	
  </mapper>

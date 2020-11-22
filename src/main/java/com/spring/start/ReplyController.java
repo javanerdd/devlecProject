@@ -1,6 +1,8 @@
 package com.spring.start;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mysql.fabric.Response;
 import com.spring.service.ReplyService;
+import com.spring.vo.PageCriteria;
+import com.spring.vo.PagingMaker;
 import com.spring.vo.ReplyVO;
 
 @RestController
@@ -38,6 +42,7 @@ public class ReplyController {
 		return resEntity;
 	}
 
+	//¥Ò±€ ∏ÆΩ∫∆Æ
 	@RequestMapping(value = "/selectAll/{bid}", method = RequestMethod.GET)
 	public ResponseEntity<List<ReplyVO>> list(@PathVariable("bid") Integer bid) {
 
@@ -54,6 +59,7 @@ public class ReplyController {
 
 	}
 
+	// ¥Ò±€ ºˆ¡§
 	@RequestMapping(value="/{rebid}", method={RequestMethod.PUT,RequestMethod.PATCH})
 	public ResponseEntity<String> modify(@PathVariable("rebid") Integer rebid, @RequestBody ReplyVO rvo){
 		ResponseEntity<String> resEntity = null;
@@ -69,32 +75,57 @@ public class ReplyController {
 		}
 		return resEntity;
 	}
+	//¥Ò±€ ªË¡¶
+	@RequestMapping(value="/{rebid}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> reDel(@PathVariable("rebid") Integer rebid){
+		
+		ResponseEntity<String> resEntity = null;
+		
+		try {
+			replyService.delReply(rebid);
+			resEntity = new ResponseEntity<String>("success", HttpStatus.OK);
+		}catch (Exception e) {
+			e.printStackTrace();
+			resEntity = new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return resEntity;
+	}
 	
+	//¥Ò±€ ∆‰¿Ã¬°√≥∏Æ
+	@RequestMapping(value="/{bid}/{page}", method=RequestMethod.GET)
+	public ResponseEntity<Map<String,Object>> reListPage(
+			@PathVariable("bid") Integer bid,
+			@PathVariable("page") Integer page){
+		
+		ResponseEntity<Map<String,Object>> resEntity = null;
+		
+		try {
+		PageCriteria pCri = new PageCriteria();
+		pCri.setPage(page);
+		
+		PagingMaker pagingMaker = new PagingMaker();
+		pagingMaker.setCri(pCri);
+		
+		Map<String, Object> reMap = new HashMap<String,Object>();
+		List<ReplyVO> reList = replyService.replyListPage(bid, pCri);
 	
+		reMap.put("reList", reList);
+		
+		int reCount = replyService.reCount(bid);
+		pagingMaker.setTotalData(reCount);
+		
+		reMap.put("pagingMaker",pagingMaker);
+		resEntity = new ResponseEntity<Map<String,Object>>(reMap,HttpStatus.OK);
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+			resEntity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+		}
+		return resEntity;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
 	
 	
 	

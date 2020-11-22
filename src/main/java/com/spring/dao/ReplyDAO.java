@@ -2,6 +2,7 @@ package com.spring.dao;
 
 import java.util.List;
 
+import com.spring.vo.PageCriteria;
 import com.spring.vo.ReplyVO;
 
 public interface ReplyDAO {
@@ -10,7 +11,13 @@ public interface ReplyDAO {
 	
 	public void write(ReplyVO rvo) throws Exception;
 	
-	public void modify(ReplyVO rvo) throws Exception;
+	public void reModify(ReplyVO rvo) throws Exception;
 	
-	public void delete(Integer rebid) throws Exception;
+	public void reDelete(Integer rebid) throws Exception;
+	
+	
+	//其捞隆 贸府
+	public List<ReplyVO> reListPage(Integer bid, PageCriteria pCri) throws Exception;   // 其捞隆
+	
+	public int reCount(Integer bid) throws Exception;
 }

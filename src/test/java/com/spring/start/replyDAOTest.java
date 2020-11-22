@@ -41,7 +41,7 @@ public class replyDAOTest {
 		rvo.setRebid(1);
 		rvo.setReplyContent("자바수정함");
 		
-		rdao.modify(rvo);
+		rdao.reModify(rvo);
 	}
 	
 	
