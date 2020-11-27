@@ -18,5 +18,5 @@ public interface ReplyService {
 	
 	public List<ReplyVO> replyListPage(Integer bid, PageCriteria pCri) throws Exception;
 	
-	public int reCount(Integer bid) throws Exception;
+	public int reCount(Integer bid)throws Exception;
 }

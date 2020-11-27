@@ -27,11 +27,18 @@
 	</delete>
 	
 	
-	<select id="reListPage">
+	<select id="reListPage" resultType="ReplyVO">
 		select * from reply
 		where bid =#{bid}
 		order by rebid desc
-		limit #{pCri.startPage}, #{pCri.numPerpage}
+		limit #{pCri.startPage}, #{pCri.numPerPage}
+	</select>
+	
+	
+	<select id="reCount" resultType="int">
+	
+		select count(bid) from reply where bid=#{bid}
+	
 	</select>
 	
 	

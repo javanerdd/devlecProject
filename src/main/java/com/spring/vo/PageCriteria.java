@@ -31,11 +31,7 @@ public class PageCriteria {
 	public int getPage() {
 		return page;
 	}
-	
 
-	
-	
-	
 	
 	public int getStartPage() {
 		return (this.page-1)*numPerPage;

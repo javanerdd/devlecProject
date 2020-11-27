@@ -42,15 +42,15 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public List<ReplyVO> reListPage(Integer bid, PageCriteria pCri) throws Exception{
 		Map<String, Object> reMap = new HashMap<>();
 		
-		reMap.put("bid",bid);
-		reMap.put("pCri",pCri);
+		reMap.put("bid", bid);
+		reMap.put("pCri", pCri);
 		
 		return sqlSession.selectList("reListPage", reMap);
 	}
 	
 	@Override
 	public int reCount(Integer bid) throws Exception{
-		return sqlSession.selectOne("reCount",bid);
+		return sqlSession.selectOne("reCount", bid);
 	}
 	
 	

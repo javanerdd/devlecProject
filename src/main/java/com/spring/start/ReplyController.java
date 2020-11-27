@@ -91,7 +91,7 @@ public class ReplyController {
 		return resEntity;
 	}
 	
-	//瘩臂 其捞隆贸府
+//	瘩臂 其捞隆贸府
 	@RequestMapping(value="/{bid}/{page}", method=RequestMethod.GET)
 	public ResponseEntity<Map<String,Object>> reListPage(
 			@PathVariable("bid") Integer bid,
@@ -124,6 +124,7 @@ public class ReplyController {
 		return resEntity;
 	}
 	
+
 
 
 	

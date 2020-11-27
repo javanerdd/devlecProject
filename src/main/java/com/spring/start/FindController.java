@@ -60,11 +60,13 @@ public class FindController {
 		//원래 목록페이지로 돌아와야 되기때문에 페이징값들을 유지하기 위해 넘겨준다
 		reAttr.addAttribute("page", fCri.getPage());
 		reAttr.addAttribute("numPerPage", fCri.getNumPerPage());
-		reAttr.addAttribute("keyWord", fCri.getKeyWord());
 		reAttr.addAttribute("findType", fCri.getFindType());
-		
+		reAttr.addAttribute("keyWord", fCri.getKeyWord());
+
 		reAttr.addFlashAttribute("result", "success");
 		
+		logger.info(reAttr.toString());
+
 		return "redirect:/fbbs/list";
 	}
 	
@@ -84,8 +86,9 @@ public class FindController {
 		
 		reAttr.addAttribute("page",fCri.getPage());
 		reAttr.addAttribute("numPerPage", fCri.getNumPerPage());
-		reAttr.addAttribute("keyWord",fCri.getKeyWord());
 		reAttr.addAttribute("findType", fCri.getFindType());
+		reAttr.addAttribute("keyWord",fCri.getKeyWord());
+
 		
 		reAttr.addFlashAttribute("result","success");
 		

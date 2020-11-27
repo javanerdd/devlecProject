@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.spring.dao.ReplyDAO;
 import com.spring.vo.PageCriteria;
 import com.spring.vo.ReplyVO;
+
 @Service
 public class ReplyServiceImpl implements ReplyService {
 	
@@ -45,6 +46,9 @@ public class ReplyServiceImpl implements ReplyService {
 	public int reCount(Integer bid) throws Exception{
 		return dao.reCount(bid);
 	}
+	
+	
+	
 	
 	
 	

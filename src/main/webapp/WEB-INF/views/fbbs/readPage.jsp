@@ -46,17 +46,58 @@
                                   <input type="text" class="form-control" name="writer" value="${bbsVO.writer}" readonly="readonly">
                               </div>
                           </div>
-                          
-                    
-                    </form>
-                  </div><!-- form-panel -->
-          			<div class="form-group">
+                                			<div class="form-group">
           				<div class="col-sm-12" align="center">
           					<button type="submit" id="btn_modify"class="btn btn-primary">수정하기</button>
           					<button type="submit" class="btn btn-danger">삭제하기</button>
           					<button type="submit" class="btn btn-info">목록으로</button>
           				</div>
+                    </div>    
+                    
+                    </form>
                     </div>
+
+
+
+<!-- 댓글   -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<h3> 댓글 List</h3>
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">작성자</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" name="replyer" id="writer">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">댓글</label>
+							<div class="col-sm-10">
+								<input type="text" size="50" name="replyContent" id="addReContent" class="form-control" />								
+							</div>
+						</div>
+						<br/><button id="submitBtn" type="submit" class="btn btn-info">댓글 작성</button>
+						<!-- 댓글 목록 / 페이징 번호목록  -->
+						<div class="form-group">
+							<ul id = "reply">
+							</ul>
+							
+							<ul class="pgeNumList">
+							</ul>
+						</div>
+				</div>
+            </div>
+        </div> 
+
+
+
+
+
+
+
+
+
                     
                     <script>
                     
