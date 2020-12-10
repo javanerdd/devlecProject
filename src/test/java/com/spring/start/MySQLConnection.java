@@ -23,7 +23,9 @@ public class MySQLConnection {
 		
 		try(Connection conn =DriverManager.getConnection(URL,USER,PWD)){
 			System.out.println(conn);
-			
+			System.out.println(conn);
+			System.out.println("디비연결 성공");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
